@@ -2,6 +2,9 @@
 *.sqlite3
 
 
+### Mac
+*.DS_Store
+
 ### Python
 
 # Byte-compiled / optimized / DLL files
