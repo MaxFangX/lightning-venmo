@@ -1,1 +1,1 @@
-web: gunicorn tipster.wsgi
+web: gunicorn venmo.wsgi

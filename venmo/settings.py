@@ -1,5 +1,5 @@
 """
-Django settings for tipster project on Heroku. Fore more info, see:
+Django settings for venmo project on Heroku. Fore more info, see:
 https://github.com/heroku/heroku-django-template
 
 For more information on this file, see
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
-    'tipster',
+    'venmo',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -55,12 +55,12 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'tipster.urls'
+ROOT_URLCONF = 'venmo.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['tipster/templates/'],
+        'DIRS': ['venmo/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tipster.wsgi.application'
+WSGI_APPLICATION = 'venmo.wsgi.application'
 
 
 # Database

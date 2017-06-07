@@ -2,7 +2,7 @@ from django.db import models, transaction
 from django.db.models import F, Sum
 from django.contrib.auth.models import User
 from django.contrib import admin
-from tipster.helpers import partition_integer_by_weights
+from venmo.helpers import partition_integer_by_weights
 
 # TODO create new type of UserException that can be exposed to the user
 
