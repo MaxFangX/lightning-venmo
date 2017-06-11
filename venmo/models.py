@@ -18,13 +18,15 @@ class Payment(models.Model):
         ('pending_invoice', 'Pending Invoice'),
         ('pending_payment', 'Pending Payment'),
         ('complete', 'Complete'),
+        ('error', 'Error'),
     )
-    status = models.CharField(max_length=50, default='accepted', choices=PAYMENT_STATUS_CHOICES)
 
-    sender = models.ForeignKey(User)
-    recipient = models.ForeignKey(User)
+    sender = models.ForeignKey(User, related_name='senders')
+    recipient = models.ForeignKey(User, related_name='recipients')
     amount = models.IntegerField()
     status = models.CharField(max_length=50, default='accepted', choices=PAYMENT_STATUS_CHOICES)
+    r_hash = models.CharField(max_length=64)
+    payment_req = models.CharField(max_length=1000)
 
 admin.site.register(Profile)
 admin.site.register(Payment)
