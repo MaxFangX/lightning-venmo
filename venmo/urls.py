@@ -1,7 +1,7 @@
 """venmo URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.8/topics/http/urls/
+    https://docs.djangoproject.com/en/1.11/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,14 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from venmo import views
-
-# TODO revise
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'u/(?P<username>[a-zA-Z0-9]+)/$', views.profile, name='profile'),
-    url(r'^upvote/(?P<pk>[0-9]+)/?$', views.upvote, name='upvote'),
-    url(r'^create-post/$', views.create_post, name='create_post'),
-    url(r'^submit/$', views.submit, name='submit'),
-    url(r'^$', views.index, name='index'),
 ]
