@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -5,12 +6,18 @@ from venmo.models import Payment, Profile
 
 
 def index(request):
-    posts = Payment.objects.all()[:25]
-    posts = sorted(posts, key=lambda p: p.value, reverse=True)
-    context = {'posts': posts, 'user': request.user, }
-    if request.user.is_authenticated():
-        _profile = Profile.objects.get(user=request.user)
-        context['profile'] = _profile
+    payments = Payment.objects.all()[:25]
+    payments = sorted(payments, key=lambda p: p.value, reverse=True)
+    context = {'payments': payments, 'user': request.user, }
+    try:
+        lnd_user = User.objects.get(profile__identity_pubkey=settings.LND_IDENTITY_PUBKEY)
+    except User.DoesNotExist:
+        lnd_user = None
+
+    if lnd_user is not None:
+        context['lnd_user'] = lnd_user
+        context['profile'] = lnd_user.profile
+
     return render_to_response(
         template_name='index.html',
         context=context)

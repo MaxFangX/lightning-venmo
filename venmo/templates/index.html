@@ -7,16 +7,13 @@
       <a id="t_holder" href="/"></a>
       <span class="headerlinks">
         <a href="/" class="cur_url">Venmo</a>
-        <a href="/recent" >Recent</a>
-        <a href="/comments" >Comments</a>
-        <a href="/submit" >Submit</a>
       </span>
     </div>
 
     <div id="headerright">
       <span class="headerlinks">
-      {% if user.is_authenticated %}
-        <a href="/u/{{ user.username }}">{{ user.username }}</a>
+      {% if lnd_user is not None %}
+        <a href="/u/{{ lnd_user.username }}">{{ lnd_user.username }}</a>
         <a href="/buy">
           <span class="upvote"></span>
           <div class="score">{{ profile.upvote_balance }}</div>

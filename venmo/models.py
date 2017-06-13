@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
-from venmo.fields import BitcoinAddressField
 
 
 class Profile(models.Model):
@@ -9,7 +8,8 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     handle = models.CharField(max_length=30)
-    lightning_address = BitcoinAddressField()
+    identity_pubkey = models.CharField(max_length=80, unique=True)
+    # lightning_address = BitcoinAddressField()
 
 
 class Payment(models.Model):
